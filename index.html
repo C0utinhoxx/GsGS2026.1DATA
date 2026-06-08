@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/BrightTheme.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<div class="layout">
+
+  <nav>
+    <div class="nav-label">Sistema</div>
+
+    <button class="nav-btn active" onclick="show('status')" id="nav-status">
+      <i class="ti ti-radar"></i> Status
+    </button>
+
+    <button class="nav-btn" onclick="show('insert')" id="nav-insert">
+      <i class="ti ti-input-check"></i> Inserir Dados
+    </button>
+
+    <button class="nav-btn" onclick="show('analysis')" id="nav-analysis">
+      <i class="ti ti-chart-dots"></i> Análise
+    </button>
+
+    <button class="nav-btn" onclick="show('history')" id="nav-history">
+      <i class="ti ti-history"></i> Histórico
+    </button>
+
+    <div class="nav-label" style="margin-top:16px;">Missão</div>
+
+    <div style="padding: 6px 16px; font-size:10px; color: var(--text-dim); line-height:1.6;">
+      <div>Nave: <span style="color:var(--accent-bright)">EXP-7</span></div>
+      <div>Leituras: <span style="color:var(--accent-bright)" id="count-nav">0</span></div>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div id="screen-status" class="screen active">
+      <div class="screen-title">Monitoramento em Tempo Real</div>
+      <div class="sensor-grid" id="sensor-grid"></div>
+
+      <div class="alerts-box">
+        <div class="alerts-title">
+          <i class="ti ti-bell-ringing"></i> Alertas Ativos
+        </div>
+        <div id="alerts-list"></div>
+      </div>
+    </div>
+
+    <div id="screen-insert" class="screen">
+      <div class="screen-title">Inserir Dados dos Sensores</div>
+
+      <div class="form-group">
+        <label>Temperatura (°C)</label>
+        <input type="range" min="-50" max="150" value="25" id="inp-temp"
+          oninput="document.getElementById('val-temp').textContent=this.value+'°C'">
+        <div class="val-display" id="val-temp">25°C</div>
+      </div>
+
+      <div class="form-group">
+        <label>Nível de Energia (%)</label>
+        <input type="range" min="0" max="100" value="75" id="inp-energy"
+          oninput="document.getElementById('val-energy').textContent=this.value+'%'">
+        <div class="val-display" id="val-energy">75%</div>
+      </div>
+
+      <div class="form-group">
+        <label>Comunicação</label>
+        <div class="toggle-row">
+          <div class="toggle-label">Status do Link de Comunicação</div>
+          <div class="toggle on" id="tog-comm" onclick="toggleComm()">
+            <div class="toggle-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="submitData()">Registrar Leitura</button>
+      <button class="btn-primary" onclick="simulateData()">Simular Sensores</button>
+    </div>
+
+    <div id="screen-analysis" class="screen">
+      <div class="screen-title">Análise Operacional</div>
+      <div id="analysis-content"></div>
+    </div>
+
+    <div id="screen-history" class="screen">
+      <div class="screen-title">Histórico de Leituras</div>
+      <div id="history-content"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
