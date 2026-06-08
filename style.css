@@ -206,7 +206,6 @@ nav {
   color: var(--red);
 }
 
-/* Alertas ativos */
 .alerts-box {
   margin-top: 20px;
   border: 1px solid var(--border);
@@ -315,7 +314,6 @@ nav {
   font-size: 11px;
 }
 
-/* Formulário */
 .form-group {
   margin-bottom: 20px;
 }
@@ -407,7 +405,6 @@ input[type="range"] {
   box-shadow: 0 0 12px rgba(91, 159, 212, 0.3);
 }
 
-/* Histórico e análise */
 .history-item,
 .analysis-stat {
   padding: 10px 12px;
@@ -479,7 +476,6 @@ input[type="range"] {
   font-size: 12px;
 }
 
-/* PNotify — tema azul marinho */
 .pnotify-container {
   z-index: 10000;
 }
